@@ -35,3 +35,36 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// 몽구스 연결
+const mongoose = require('mongoose')
+const User = require('./models/users')
+
+// const userSchema = new mongoose.Schema({
+//   name: { type: String, default: '', unique: true, index: true },
+//   age: {type: Number, default: 1 }
+// })
+//
+// const User = mongoose.model('User', userSchema)
+
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true }, (err)=> {
+    if(err) return console.error(err);
+    console.log('mongoose connected!');
+})
+
+// User.create({ name: '하하'}).then(r => console.log(r)).catch(e => console.error(e))
+
+// User.find().then(r => console.log(r)).catch(e => console.error(e))
+
+// User.updateOne({ _id: '5cbd466b9b1674d24f11d7dc' }, { $set: {age: 27 } })
+// .then(r => {
+//   console.log(r);
+//   console.log('updated');
+//   return User.find()
+// })
+// .then(r => console.log(r))
+// .catch(e => console.error(e))
+
+// User.deleteOne({ age: 1 })
+// .then(r => console.log(r))
+// .catch(e => console.error(e))
