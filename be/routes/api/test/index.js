@@ -1,14 +1,17 @@
 var express = require('express');
-var router = express.Router();
 var createError = require('http-errors');
+var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send({ msg : 'hello', a: 1 });
+  res.send({ msg: 'hello', a: 'helloworld' })
+});
+
+router.get('/hello', function(req, res, next) {
+  res.send({ msg: 'hello', a: 1111 })
 });
 
 router.all('*', function(req, res, next) {
-  next(createError(404,'API를 찾을 수 없습니다.'));
+  next(createError(404, 'API를 찾을 수 없습니다.'));
 });
 
 module.exports = router;
