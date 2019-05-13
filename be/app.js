@@ -68,7 +68,8 @@ const User = require('./models/users')
 //
 // const User = mongoose.model('User', userSchema)
 
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true }, (err) => {
+mongoose.connect('mongodb://localhost:27017/test', { useCreateIndex: true,
+  useNewUrlParser: true }, (err) => {
    if (err) return console.error(err)
    console.log('mongoose connected!')
 
