@@ -10,6 +10,7 @@ router.all('*', function(req, res, next) {
   next()
 });
 
+router.use('/sign', require('./sign'))
 
 /* GET home page. */
 router.get('/hello', function(req, res, next) {

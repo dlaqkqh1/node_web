@@ -8,6 +8,8 @@ const cors = require('cors'); //cors 설정
 
 var app = express();
 
+const jwt = require('jsonwebtoken');
+const key = '마이스터고';
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -56,6 +58,7 @@ module.exports = app;
 //몽구스 연결
 
 const mongoose = require('mongoose')
+mongoose.set('useCreateIndex', true)
 
 const User = require('./models/users')
 // console.log(User)
@@ -72,6 +75,7 @@ mongoose.connect('mongodb://localhost:27017/test', { useCreateIndex: true,
   useNewUrlParser: true }, (err) => {
    if (err) return console.error(err)
    console.log('mongoose connected!')
+ })
 
    //쓰기
    // User.create({ name: '하하' })
@@ -99,8 +103,7 @@ mongoose.connect('mongodb://localhost:27017/test', { useCreateIndex: true,
   // User.remove({})
   // User.deleteMany({})
 
-  // User.deleteOne({ name: '하하' })
-  //     .then(r => console.log(r))
-  //     .catch(e => console.error(e))
-
-})
+//   User.deleteMany({})
+//       .then(r => console.log(r))
+//       .catch(e => console.error(e))
+// })
